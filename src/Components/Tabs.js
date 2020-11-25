@@ -37,10 +37,8 @@ function a11yProps(index) {
 
 export function SimpleTabs({
   background,
-  prosAndCons,
-  performance,
-  example,
-  problem,
+  DepthFirstSearch,
+  problemAndExample,
   quiz,
   quizDisabled,
 }) {
@@ -52,16 +50,6 @@ export function SimpleTabs({
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  useEffect(() => {
-    if (quizDisabled === false) {
-      setShake(true);
-
-      setTimeout(() => {
-        setShake(false);
-      }, 1000);
-    }
-  }, [quizDisabled]);
 
   return (
     <div className={classes.root}>
@@ -77,17 +65,19 @@ export function SimpleTabs({
           <Tab className={classes.tab} label="Background" {...a11yProps(0)} />
           <Tab
             className={classes.tab}
-            label="pros and cons"
+            label="DepthFirstSearch"
             {...a11yProps(1)}
           />
-          <Tab className={classes.tab} label="Performance" {...a11yProps(2)} />
-          <Tab className={classes.tab} label="example" {...a11yProps(3)} />
-          <Tab className={classes.tab} label="problem" {...a11yProps(4)} />
+          <Tab
+            className={classes.tab}
+            label="problem and example"
+            {...a11yProps(2)}
+          />
 
           <Tab
             className={clsx(classes.tab, shake && classes.shake)}
             label="Quiz"
-            {...a11yProps(5)}
+            {...a11yProps(3)}
             disabled={quizDisabled}
           />
         </Tabs>
@@ -96,29 +86,12 @@ export function SimpleTabs({
         {background}
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.panel}>
-        {prosAndCons}
-      </TabPanel>
-
-      <TabPanel value={value} index={2} className={classes.panel}>
-        {performance}
+        {DepthFirstSearch}
       </TabPanel>
 
       <TabPanel
         value={value}
-        index={3}
-        className={classes.panel}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        {example}
-      </TabPanel>
-      <TabPanel
-        value={value}
-        index={4}
+        index={2}
         className={classes.examplePanel}
         style={{
           display: "flex",
@@ -127,9 +100,9 @@ export function SimpleTabs({
           flexDirection: "column",
         }}
       >
-        {problem}
+        {problemAndExample}
       </TabPanel>
-      <TabPanel value={value} index={5} className={classes.panel}>
+      <TabPanel value={value} index={3} className={classes.panel}>
         {quiz}
       </TabPanel>
     </div>

@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 
 export const ProgressContext = React.createContext({
-  unlocked: [],
-  setUnlocked: () => {},
-  unlockedQuizes: [],
-  setUnlockedQuizes: () => {},
+  unlockedQuiz: [],
+  setUnlockedQuiz: () => {},
 });
 
 export function ProgessController({ children }) {
-  const [unlocked, setUnlocked] = useState([]);
-  const [unlockedQuizes, setUnlockedQuizes] = useState(
-    JSON.parse(localStorage.getItem("unlockedQuizes"))
+  const [unlockedQuiz, setUnlockedQuiz] = useState(
+    JSON.parse(localStorage.getItem("unlockedQuiz"))
   );
 
   const value = React.useMemo(
     () => ({
-      unlocked,
-      setUnlocked,
-      unlockedQuizes,
-      setUnlockedQuizes,
+      unlockedQuiz,
+      setUnlockedQuiz,
     }),
-    [unlocked, setUnlocked, unlockedQuizes, setUnlockedQuizes]
+    [unlockedQuiz, setUnlockedQuiz]
   );
 
   return (

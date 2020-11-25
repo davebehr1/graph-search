@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import classes from "./Circle.module.css";
 import { Button } from "@material-ui/core";
 
-export const GraphVis = () => {
+export const GraphVisUndirected = () => {
   const ref = useRef();
 
   var i = 0,
@@ -55,7 +55,7 @@ export const GraphVis = () => {
       .data(root.descendants())
       .enter()
       .append("circle")
-      .classed("node", true)
+      .classed("vertex", true)
       .attr("cx", function (d) {
         return d.x;
       })
@@ -70,7 +70,7 @@ export const GraphVis = () => {
       .data(root.links())
       .enter()
       .append("line")
-      .classed("link", true)
+      .classed("edge", true)
       .attr("x1", function (d) {
         return d.source.x;
       })
@@ -91,15 +91,15 @@ export const GraphVis = () => {
 
   function visitElement(element, animX) {
     d3.select("svg g.nodes")
-      .selectAll("circle.node")
+      .selectAll("circle.vertex")
       .filter(function (d) {
         return d.data.name == element.data.name;
       })
       .transition()
       .duration(animDuration)
       .delay(animDuration * animX)
-      .style("fill", "orange")
-      .style("stroke", "orange");
+      .style("fill", "black")
+      .style("stroke", "#3d4177");
   }
 
   function dft() {
@@ -129,7 +129,7 @@ export const GraphVis = () => {
     <>
       <Button
         onClick={() => dft()}
-        style={{ background: "#f50057", width: "100%" }}
+        style={{ background: "#f50057", width: "100%", color: "#e2e2e2" }}
       >
         Traverse
       </Button>

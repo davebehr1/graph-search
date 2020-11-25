@@ -5,7 +5,7 @@ import { Button } from "@material-ui/core";
 import "./GraphVizTwo.css";
 
 export const GraphVisTwo = () => {
-  const ref = useRef();
+  const graphRef = useRef();
 
   var i = 0,
     animDuration = 500,
@@ -20,6 +20,9 @@ export const GraphVisTwo = () => {
     { name: "C" },
     { name: "D" },
     { name: "E" },
+    { name: "F" },
+    { name: "G" },
+    { name: "H" },
   ];
 
   var links = [
@@ -29,26 +32,18 @@ export const GraphVisTwo = () => {
     { source: 1, target: 3 },
     { source: 3, target: 2 },
     { source: 3, target: 4 },
+    { source: 4, target: 5 },
+    { source: 5, target: 6 },
+    { source: 6, target: 7 },
+    { source: 3, target: 7 },
   ];
 
-  function resetTraversal(root) {
-    //d3.selectAll(".node").classed("visited",false);
-    d3.selectAll(".node")
-      .transition()
-      .duration(animDuration)
-      .style("fill", "#fff")
-      .style("stroke", "steelblue");
-  }
-
   function updateNodes() {
-    var u = d3.select(".nodes").selectAll("circle").data(nodes);
+    var u = d3.select(".vertexes").selectAll("circle").data(nodes);
 
     u.enter()
       .append("circle")
       .classed("node", true)
-      //   .text(function (d) {
-      //     return d.name;
-      //   })
       .merge(u)
       .attr("cx", function (d) {
         return d.x;
@@ -62,7 +57,7 @@ export const GraphVisTwo = () => {
     u.exit().remove();
   }
   function updateLinks() {
-    let u = d3.select(".links").selectAll("line").data(links);
+    let u = d3.select(".edges").selectAll("line").data(links);
 
     u.enter()
       .append("line")
@@ -84,42 +79,13 @@ export const GraphVisTwo = () => {
     u.exit().remove();
   }
 
-  function visitElement(element, animX) {
-    d3.select("svg g.nodes")
-      .selectAll("circle.node")
-      .filter(function (d) {
-        return d.data.name == element.data.name;
-      })
-      .transition()
-      .duration(animDuration)
-      .delay(animDuration * animX)
-      .style("fill", "orange")
-      .style("stroke", "orange");
-  }
-
-  function dft() {
-    var stack = [];
-    var animX = 0;
-    stack.push(root);
-
-    while (stack.length !== 0) {
-      var element = stack.pop();
-      visitElement(element, animX);
-      animX = animX + 1;
-      if (element.children !== undefined) {
-        for (var i = 0; i < element.children.length; i++) {
-          stack.push(element.children[element.children.length - i - 1]);
-        }
-      }
-    }
-  }
   function ticked() {
     updateLinks();
     updateNodes();
   }
   useEffect(() => {
     d3.forceSimulation(nodes)
-      .force("charge", d3.forceManyBody().strength(-300))
+      .force("charge", d3.forceManyBody().strength(-100))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("link", d3.forceLink().links(links))
       .on("tick", ticked);
@@ -129,16 +95,19 @@ export const GraphVisTwo = () => {
   }, []);
   return (
     <>
-      <Button
-        onClick={() => dft()}
-        style={{ background: "#f50057", width: "100%" }}
+      <div
+        ref={graphRef}
+        className={classes.wrapper}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginLeft: "0px",
+          marginTop: "20px",
+        }}
       >
-        Traverse
-      </Button>
-      <div ref={ref} className={classes.wrapper}>
-        <svg width="100%" height="100%">
-          <g class="links"></g>
-          <g class="nodes"></g>
+        <svg width="150px" height="150px" viewBox="0 0 200 200">
+          <g class="edges"></g>
+          <g class="vertexes"></g>
         </svg>
       </div>
     </>

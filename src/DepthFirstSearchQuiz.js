@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ProgressContext } from "./Context";
 import { ClipButton } from "./Components/ClipButton";
-import { clipPaths } from "./Home";
 
 const schema = yup.object().shape({
   question1: yup.string().required("please answer this question"),
@@ -20,15 +19,15 @@ const schema = yup.object().shape({
 });
 
 const answers = {
-  question1: "Logarithmic search",
-  question2: "True",
-  question3: "True",
+  question1: "Cycles",
+  question2: "O(E + V)",
+  question3: "backtracks",
   question4: "O(log n)",
-  question5: "True",
+  question5: "stack",
   question6: "True",
-  question7: "Both",
-  question8: "Binary Search",
-  question9: "True",
+  question7: "all",
+  question8: "oneDirection",
+  question9: "edgeWeight",
 };
 
 export function DepthFirstSearchQuiz() {
@@ -88,7 +87,8 @@ export function DepthFirstSearchQuiz() {
           <Form className={classes.quiz} onSubmit={handleSubmit}>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Binary search is also known as?
+                What needs to be conssidered when doing DFS on a fully connected
+                graph as opposed to an undirected graph?
               </label>
               <div
                 role="group"
@@ -96,24 +96,16 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field
-                    type="radio"
-                    name="question1"
-                    value="Sequential search"
-                  />
-                  Sequential search
+                  <Field type="radio" name="question1" value="Cycles" />
+                  Cycles
                 </label>
                 <label>
-                  <Field
-                    type="radio"
-                    name="question1"
-                    value="Logarithmic search"
-                  />
-                  Logarithmic search
+                  <Field type="radio" name="question1" value="Spanning trees" />
+                  Spanning trees
                 </label>
                 <label>
-                  <Field type="radio" name="question1" value="Hashing" />
-                  Hashing
+                  <Field type="radio" name="question1" value="Euler Planes" />
+                  Euler Planes
                 </label>
               </div>
             </div>
@@ -124,7 +116,8 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Binary search requires a data structure to be sorted?
+                What is the Big O performance of DFS? Where E = no edges and V =
+                no vertices
               </label>
               <div
                 role="group"
@@ -132,12 +125,16 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question2" value="True" />
-                  True
+                  <Field type="radio" name="question2" value="O(n)" />
+                  O(n)
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="False" />
-                  False
+                  <Field type="radio" name="question2" value="O(E)" />
+                  O(E)
+                </label>
+                <label>
+                  <Field type="radio" name="question2" value="O(E + V)" />
+                  O(E + V)
                 </label>
               </div>
             </div>
@@ -148,7 +145,7 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Binary search is considered an optimal searching algorithm?
+                What is the stratergy employed by DFS?
               </label>
               <div
                 role="group"
@@ -156,12 +153,12 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question3" value="True" />
-                  True
+                  <Field type="radio" name="question3" value="neighbours" />
+                  It explores all the neighbour nodes of the current node
                 </label>
                 <label>
-                  <Field type="radio" name="question3" value="False" />
-                  False
+                  <Field type="radio" name="question3" value="backtracks" />
+                  It explores a branch until it cant anymore then it backtracks
                 </label>
               </div>
             </div>
@@ -172,7 +169,7 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                What is the average case performance of binary search?
+                What data strcuture is used when Exploring a graph using DFS?
               </label>
               <div
                 role="group"
@@ -180,16 +177,16 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question4" value="O(n)" />
-                  O(n)
+                  <Field type="radio" name="question4" value="linked list" />
+                  linked list
                 </label>
                 <label>
-                  <Field type="radio" name="question4" value=" O(n/2)" />
-                  O(n/2)
+                  <Field type="radio" name="question4" value="queue" />
+                  queue
                 </label>
                 <label>
-                  <Field type="radio" name="question4" value="O(log n)" />
-                  O(log n)
+                  <Field type="radio" name="question4" value="stack" />
+                  stack
                 </label>
               </div>
             </div>
@@ -200,8 +197,7 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                The worst case performance is the same as the average case
-                performance for binary search
+                When are two nodes adjacent to each other in a graph?
               </label>
               <div
                 role="group"
@@ -209,12 +205,16 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question5" value="True" />
-                  True
+                  <Field type="radio" name="question5" value="lookClose" />
+                  When they look like they are close to each other
                 </label>
                 <label>
-                  <Field type="radio" name="question5" value="False" />
-                  False
+                  <Field type="radio" name="question5" value="neighbourNode" />
+                  When they both share a common neighbouring node
+                </label>
+                <label>
+                  <Field type="radio" name="question5" value="edgeShared" />
+                  When they are connected by an edge
                 </label>
               </div>
             </div>
@@ -225,7 +225,7 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Binary search is faster than linear search?
+                When is a graph connected?
               </label>
               <div
                 role="group"
@@ -234,11 +234,11 @@ export function DepthFirstSearchQuiz() {
               >
                 <label>
                   <Field type="radio" name="question6" value="True" />
-                  True
+                  When there is a path between any two vertices in the graph
                 </label>
                 <label>
                   <Field type="radio" name="question6" value="False" />
-                  False
+                  when verte is connected to every other vertex in the graph
                 </label>
               </div>
             </div>
@@ -249,8 +249,7 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Which of the following searching algorithm has a best case
-                performance of O(1)?
+                Why are graphs useful?
               </label>
               <div
                 role="group"
@@ -258,16 +257,25 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question7" value="Binary Search" />
-                  Binary Search
+                  <Field
+                    type="radio"
+                    name="question7"
+                    value="complexRelationhships"
+                  />
+                  They can model complex relationships
                 </label>
                 <label>
-                  <Field type="radio" name="question7" value="Linear Search" />
-                  Linear Search
+                  <Field type="radio" name="question7" value="networking" />
+                  They have many real world applications such as networking
                 </label>
                 <label>
-                  <Field type="radio" name="question7" value="Both" />
-                  Both
+                  <Field type="radio" name="question7" value="socialMedia" />
+                  Their structure makes them ideal for modeling social
+                  transactions on social media
+                </label>
+                <label>
+                  <Field type="radio" name="question7" value="all" />
+                  all of the above
                 </label>
               </div>
             </div>
@@ -278,9 +286,8 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Which searching algorithm In terms of iterations and that works
-                only by comparing elements exhibits the best average and
-                worst-case performance of the following searching algorithms?
+                What is the difference between a uniDirected Graph and a
+                Directed Graph?
               </label>
               <div
                 role="group"
@@ -288,16 +295,14 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question8" value="Linear search" />
-                  Linear Search
+                  <Field type="radio" name="question8" value="uniCycle" />
+                  uni directed graph contains cycles where as directed graphs
+                  dont
                 </label>
                 <label>
-                  <Field type="radio" name="question8" value="Binary Search" />
-                  Binary Search
-                </label>
-                <label>
-                  <Field type="radio" name="question8" value="Hashing" />
-                  Hashing
+                  <Field type="radio" name="question8" value="oneDirection" />
+                  directed graphs edges can only be traversed in one direction
+                  as opposed to unidirected graphs
                 </label>
               </div>
             </div>
@@ -308,8 +313,7 @@ export function DepthFirstSearchQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Does binary search compare the target value to the middle
-                element of the array when applied?
+                What is a weighted graph?
               </label>
               <div
                 role="group"
@@ -317,12 +321,16 @@ export function DepthFirstSearchQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question9" value="True" />
-                  True
+                  <Field type="radio" name="question9" value="moreEdges" />A
+                  graph that contains more edges than nodes
                 </label>
                 <label>
-                  <Field type="radio" name="question9" value="False" />
-                  False
+                  <Field type="radio" name="question9" value="moreNodes" />A
+                  graph that contains more nodes than edges
+                </label>
+                <label>
+                  <Field type="radio" name="question9" value="edgeWeight" />A
+                  graph with edges that are weighted
                 </label>
               </div>
             </div>
@@ -338,7 +346,6 @@ export function DepthFirstSearchQuiz() {
                 className={classes.button}
                 type={"submit"}
                 label={"submit"}
-                clipPath={clipPaths[1]}
                 padding="20px"
                 fontSize="20px"
               />

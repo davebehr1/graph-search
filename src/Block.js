@@ -1,15 +1,21 @@
 import React, { useState, useRef } from "react";
-import BlocklyComponent, { Block, Value, Field, Shadow } from "./Blockly";
+import BlocklyComponent, {
+  Block,
+  Value,
+  Field,
+  Shadow,
+  Category,
+} from "./Blockly";
 
 import { Typography, Box, IconButton, Button } from "@material-ui/core";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import BlocklyJs from "blockly/javascript";
-import { GraphVis } from "./GraphVis";
-import { GraphVisTwo } from "./GraphVisTwo";
+import { GraphVisUndirected } from "./GraphVisUndirected";
 import BlocklyP from "blockly/python";
 import "./blocks/customblocks";
 import "./generator/generator";
 import useStyles from "./BlockStyles";
+import { CopyBlock, dracula } from "react-code-blocks";
 
 var Interpreter = require("js-interpreter");
 
@@ -20,6 +26,7 @@ export function Blocky() {
   const simpleWorkspace = useRef();
 
   const generateCode = () => {
+    localStorage.setItem("unlockedQuiz", false);
     var code = BlocklyJs.workspaceToCode(simpleWorkspace.current.workspace);
     setJsCode(code);
 
@@ -54,8 +61,19 @@ export function Blocky() {
       `}
       >
         <Block type="test_react_field" />
-        <Block type="test_react_date_field" />
-        <Block type="controls_ifelse" />
+
+        <category name="Variables" custom="VARIABLE"></category>
+        <Category name="Loops" colour="120">
+          <Block type="controls_whileUntil" />
+          <Block type="controls_ifelse" />
+        </Category>
+        <Category name="Functions" colour="290" custom="PROCEDURE" />
+        {/* <Category name="Math" colour="230" />
+        <Category name="Colour" colour="20" />
+        <Category name="Variables" colour="330" custom="VARIABLE" />
+        */}
+        {/* <Block type="test_react_date_field" />
+      
         <Block type="logic_compare" />
         <Block type="logic_operation" />
         <Block type="controls_repeat_ext">
@@ -76,26 +94,33 @@ export function Blocky() {
               <Field name="VAR">text</Field>
             </Block>
           </Value>
-        </Block>
+        </Block> */}
       </BlocklyComponent>
       <Box className={classes.code}>
         <Button
           onClick={() => generateCode()}
           className={classes.convertButton}
         >
-          Convert
+          Convert to python
         </Button>
-        <Typography variant="text">{pCode}</Typography>
+        <CopyBlock
+          text={pCode}
+          language={"python"}
+          showLineNumbers={true}
+          codeBlock
+          wrapLines
+          theme={dracula}
+        />
         <IconButton
           color="secondary"
           aria-label="Run code"
           className={classes.runCodeButton}
         >
-          <PlayCircleFilledWhiteIcon />
+          <PlayCircleFilledWhiteIcon onClick={() => runCode()} />
         </IconButton>
       </Box>
       <Box className={classes.graphVisWrapper}>
-        <GraphVisTwo />
+        <GraphVisUndirected />
       </Box>
     </div>
   );

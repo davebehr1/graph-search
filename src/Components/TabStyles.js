@@ -4,13 +4,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "80%",
     backgroundColor: "transparent",
-    border: "2px solid orange",
+    border: "2px solid #3d4177",
     marginBottom: "50px",
   },
   tab: {
-    border: "2px solid orange",
+    border: "2px solid #3d4177",
     margin: "10px",
-    color: "orange",
+    color: "#3d4177",
   },
   shake: {
     color: "#e6d470",
@@ -21,17 +21,17 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   indicator: {
-    backgroundColor: "orange",
+    backgroundColor: "#3d4177",
   },
   appbar: {
     boxShadow: "none",
     backgroundColor: "transparent",
   },
   panel: {
-    color: "orange",
+    color: "#3d4177",
   },
   examplePanel: {
-    color: "orange",
+    color: "#3d4177",
     padding: "20px",
     "& > div": {
       height: "50vh",

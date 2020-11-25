@@ -9,10 +9,10 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
     padding: "2px",
-    backgroundColor: "rgb(255 165 0 / 1)",
+    backgroundColor: "#10144a",
   },
   button: {
-    background: "linear-gradient(120.93deg, #03294a 4.58%, #091321 91.02%)",
+    background: "linear-gradient(120.93deg, #7d7d7d 4.58%, #6f6f6f 91.02%)",
     padding: "50px",
   },
   disabled: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
   Link: {
     textDecoration: "none",
     fontSize: "24px",
-    color: "orange",
+    color: "#3d4177",
     fontWeight: 900,
   },
 }));

@@ -11,31 +11,21 @@ export function NavBar() {
   useEffect(() => {}, [unlocked]);
 
   return (
-    <div className={classes.navbarWrapper}>
-      <div className={classes.navbar}>
-        <Link
-          to="/"
-          className={clsx(
-            classes.link,
-            classes.heading,
-            pathname === "/" && classes.active
-          )}
-        >
-          <h1 className={classes.title}>Graph Search Algorithms</h1>
-        </Link>
+    <div className={classes.navbar}>
+      <Link
+        to="/"
+        className={clsx(
+          classes.link,
+          classes.heading,
+          pathname === "/" && classes.active
+        )}
+      >
+        <h1 className={classes.title}>Graph Search Algorithms</h1>
+      </Link>
 
-        <Link
-          link={"/depth-first-search"}
-          className={clsx(
-            classes.link,
-            pathname === "/linear-search" && classes.active,
-            !localStorage.getItem("unlockedPages").includes("linear-search") &&
-              classes.disabled
-          )}
-        >
-          Depth First Search
-        </Link>
-      </div>
+      <Link link={"/depth-first-search"} className={clsx(classes.link)}>
+        Depth First Search
+      </Link>
     </div>
   );
 }

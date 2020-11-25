@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   graphVisWrapper: {
     width: "20%",
+    background: "#e2e2e2",
   },
 }));
 export default useStyles;
