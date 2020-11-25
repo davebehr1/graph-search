@@ -31,37 +31,11 @@ export function DepthFirstSearch() {
         }
         background={
           <div className={classes.background}>
-            <Typography variant="body1">
-              Binary Search is searching technique which works on Divide and
-              Conquer approach. It used to search any element in a sorted array.
-              As compared to linear, binary search is much faster with Time
-              Complexity of O(logN) whereas linear search algorithm works in
-              O(N) time complexity
-            </Typography>
+            <Typography variant="body1">What are Graphs</Typography>
+            <Typography variant="body1">Why are they important</Typography>
+            <Typography variant="body1">What is Graph Traversal</Typography>
             <br />
-            <h3>Read more about linear search here</h3>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-              }}
-            >
-              <a
-                className={classes.link}
-                href="https://www.tutorialspoint.com/data_structures_algorithms/binary_search_algorithm.htm"
-                target="_blank"
-              >
-                tutorialspoint
-              </a>
-              <a
-                className={classes.link}
-                href="https://www.geeksforgeeks.org/binary-search/"
-                target="_blank"
-              >
-                Geeks for Geeks
-              </a>
-            </div>
+
             <ReactPlayer
               url="https://www.youtube.com/watch?v=T2sFYY-fT5o"
               style={{ margin: "30px" }}

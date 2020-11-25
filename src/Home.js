@@ -57,7 +57,7 @@ export function Home() {
 
         <div className={classes.Wrapper}>
           <div className={"wrapper"}>
-            <h1 className={"glitch"}>Welcome detective</h1>
+            <h1 className={"glitch"}>Welcome</h1>
           </div>
           <Box>
             <BadgeSvg

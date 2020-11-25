@@ -5,6 +5,7 @@ import { Typography, Box, IconButton, Button } from "@material-ui/core";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import BlocklyJs from "blockly/javascript";
 import { GraphVis } from "./GraphVis";
+import { GraphVisTwo } from "./GraphVisTwo";
 import BlocklyP from "blockly/python";
 import "./blocks/customblocks";
 import "./generator/generator";
@@ -94,7 +95,7 @@ export function Blocky() {
         </IconButton>
       </Box>
       <Box className={classes.graphVisWrapper}>
-        <GraphVis />
+        <GraphVisTwo />
       </Box>
     </div>
   );
