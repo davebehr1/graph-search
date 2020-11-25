@@ -14,7 +14,7 @@ import { GraphVisTwo } from "./GraphVisTwo";
 import { CopyBlock, dracula } from "react-code-blocks";
 export function DepthFirstSearch() {
   const myRef = useRef();
-  const { unlockedQuiz, setUnlockedQuiz } = useContext(ProgressContext);
+  const { unlockedQuiz } = useContext(ProgressContext);
 
   useEffect(() => {
     const svgElement = d3.select(myRef.current);
@@ -25,7 +25,7 @@ export function DepthFirstSearch() {
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>Depth First Search</h1>
       <SimpleTabs
-        quizDisabled={unlockedQuiz === null ? true : unlockedQuiz === true}
+        quizDisabled={unlockedQuiz === null ? true : unlockedQuiz === false}
         background={
           <div className={classes.background}>
             <Typography variant="body1" style={{ color: "#10144a" }}>

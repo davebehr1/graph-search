@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./search.module.css";
 import { Box } from "@material-ui/core";
 import * as yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { ProgressContext } from "./Context";
 import { ClipButton } from "./Components/ClipButton";
 
 const schema = yup.object().shape({
@@ -31,7 +30,6 @@ const answers = {
 };
 
 export function DepthFirstSearchQuiz() {
-  const { unlocked, setUnlocked } = useContext(ProgressContext);
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>test your knowledge</h1>

@@ -1,15 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import classes from "./Circle.module.css";
-import { Button } from "@material-ui/core";
 import "./GraphVizTwo.css";
 
 export const GraphVisTwo = () => {
   const graphRef = useRef();
-
-  var i = 0,
-    animDuration = 500,
-    root;
 
   var width = 150,
     height = 150;
@@ -92,7 +87,7 @@ export const GraphVisTwo = () => {
 
     updateLinks();
     updateNodes();
-  }, []);
+  }, [height, links, nodes, ticked, updateLinks, updateNodes, width]);
   return (
     <>
       <div
@@ -106,8 +101,8 @@ export const GraphVisTwo = () => {
         }}
       >
         <svg width="150px" height="150px" viewBox="0 0 200 200">
-          <g class="edges"></g>
-          <g class="vertexes"></g>
+          <g className="edges"></g>
+          <g className="vertexes"></g>
         </svg>
       </div>
     </>

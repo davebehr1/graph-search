@@ -6,9 +6,7 @@ import { Button } from "@material-ui/core";
 export const GraphVisUndirected = () => {
   const ref = useRef();
 
-  var i = 0,
-    animDuration = 500,
-    root;
+  var animDuration = 500;
 
   var data = {
     name: "A1",
@@ -93,7 +91,7 @@ export const GraphVisUndirected = () => {
     d3.select("svg g.nodes")
       .selectAll("circle.vertex")
       .filter(function (d) {
-        return d.data.name == element.data.name;
+        return d.data.name === element.data.name;
       })
       .transition()
       .duration(animDuration)
@@ -124,7 +122,7 @@ export const GraphVisUndirected = () => {
     treeLayout(root);
 
     update(root);
-  }, []);
+  }, [root, update]);
   return (
     <>
       <Button

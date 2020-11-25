@@ -23,7 +23,7 @@ export function NavBar() {
         <h1 className={classes.title}>Graph Search Algorithms</h1>
       </Link>
 
-      <Link link={"/depth-first-search"} className={clsx(classes.link)}>
+      <Link to={"/depth-first-search"} className={clsx(classes.link)}>
         Depth First Search
       </Link>
     </div>

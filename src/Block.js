@@ -1,13 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import BlocklyComponent, {
   Block,
+  Category,
   Value,
   Field,
   Shadow,
-  Category,
 } from "./Blockly";
 
-import { Typography, Box, IconButton, Button } from "@material-ui/core";
+import { Box, IconButton, Button } from "@material-ui/core";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import BlocklyJs from "blockly/javascript";
 import { GraphVisUndirected } from "./GraphVisUndirected";
@@ -16,32 +16,33 @@ import "./blocks/customblocks";
 import "./generator/generator";
 import useStyles from "./BlockStyles";
 import { CopyBlock, dracula } from "react-code-blocks";
-
-var Interpreter = require("js-interpreter");
+import { ProgressContext } from "./Context";
 
 export function Blocky() {
   const classes = useStyles();
   const [jsCode, setJsCode] = useState("");
   const [pCode, setPCode] = useState("");
   const simpleWorkspace = useRef();
+  const { setUnlockedQuiz } = useContext(ProgressContext);
 
   const generateCode = () => {
     localStorage.setItem("unlockedQuiz", false);
-    var code = BlocklyJs.workspaceToCode(simpleWorkspace.current.workspace);
-    setJsCode(code);
+    BlocklyJs.workspaceToCode(simpleWorkspace.current.workspace);
+    setJsCode(BlocklyJs.workspaceToCode(simpleWorkspace.current.workspace));
 
-    var code = BlocklyP.workspaceToCode(simpleWorkspace.current.workspace);
-    setPCode(code);
+    BlocklyP.workspaceToCode(simpleWorkspace.current.workspace);
+    setPCode(BlocklyP.workspaceToCode(simpleWorkspace.current.workspace));
   };
 
   const runCode = () => {
-    var code = BlocklyJs.workspaceToCode(simpleWorkspace.current.workspace);
-    setJsCode(code);
+    setUnlockedQuiz(true);
+    localStorage.setItem("unlockedQuiz", true);
 
-    var code = BlocklyP.workspaceToCode(simpleWorkspace.current.workspace);
-    setPCode(code);
-    var myInterpreter = new Interpreter(jsCode);
-    myInterpreter.run();
+    setJsCode(BlocklyJs.workspaceToCode(simpleWorkspace.current.workspace));
+
+    console.log("jsCode:", jsCode);
+
+    eval(jsCode);
   };
   return (
     <div id="blockWrapper">
@@ -62,12 +63,23 @@ export function Blocky() {
       >
         <Block type="test_react_field" />
 
-        <category name="Variables" custom="VARIABLE"></category>
+        <Category name="Variables" custom="VARIABLE"></Category>
         <Category name="Loops" colour="120">
           <Block type="controls_whileUntil" />
           <Block type="controls_ifelse" />
         </Category>
         <Category name="Functions" colour="290" custom="PROCEDURE" />
+
+        <Category name="text" colour="160">
+          <Block type="text_print">
+            <Value name="TEXT">
+              <Shadow type="text">
+                <Field name="TEXT">abc</Field>
+              </Shadow>
+            </Value>
+          </Block>
+        </Category>
+
         {/* <Category name="Math" colour="230" />
         <Category name="Colour" colour="20" />
         <Category name="Variables" colour="330" custom="VARIABLE" />
@@ -115,8 +127,9 @@ export function Blocky() {
           color="secondary"
           aria-label="Run code"
           className={classes.runCodeButton}
+          onClick={() => runCode()}
         >
-          <PlayCircleFilledWhiteIcon onClick={() => runCode()} />
+          <PlayCircleFilledWhiteIcon />
         </IconButton>
       </Box>
       <Box className={classes.graphVisWrapper}>

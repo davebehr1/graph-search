@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -45,8 +45,6 @@ export function SimpleTabs({
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
-  const [shake, setShake] = React.useState(false);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -75,7 +73,7 @@ export function SimpleTabs({
           />
 
           <Tab
-            className={clsx(classes.tab, shake && classes.shake)}
+            className={clsx(classes.tab)}
             label="Quiz"
             {...a11yProps(3)}
             disabled={quizDisabled}
