@@ -119,7 +119,7 @@ export function SimpleTabs({
       <TabPanel
         value={value}
         index={4}
-        className={classes.panel}
+        className={classes.examplePanel}
         style={{
           display: "flex",
           justifyContent: "center",

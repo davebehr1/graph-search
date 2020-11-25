@@ -21,11 +21,11 @@ export function NavBar() {
             pathname === "/" && classes.active
           )}
         >
-          <h1 className={classes.title}>Searching Algorithms</h1>
+          <h1 className={classes.title}>Graph Search Algorithms</h1>
         </Link>
 
         <Link
-          to="/linear-search"
+          link={"/depth-first-search"}
           className={clsx(
             classes.link,
             pathname === "/linear-search" && classes.active,
@@ -33,29 +33,7 @@ export function NavBar() {
               classes.disabled
           )}
         >
-          Linear Search
-        </Link>
-        <Link
-          to="/binary-search"
-          className={clsx(
-            classes.link,
-            pathname === "/binary-search" && classes.active,
-            !localStorage.getItem("unlockedPages").includes("binary-search") &&
-              classes.disabled
-          )}
-        >
-          Binary Search
-        </Link>
-        <Link
-          to="/hashing"
-          className={clsx(
-            classes.link,
-            pathname === "/hashing" && classes.active,
-            !localStorage.getItem("unlockedPages").includes("hashing") &&
-              classes.disabled
-          )}
-        >
-          Hashing
+          Depth First Search
         </Link>
       </div>
     </div>

@@ -30,5 +30,13 @@ const useStyles = makeStyles((theme) => ({
   panel: {
     color: "orange",
   },
+  examplePanel: {
+    color: "orange",
+    padding: "20px",
+    "& > div": {
+      height: "50vh",
+      width: "100%",
+    },
+  },
 }));
 export default useStyles;

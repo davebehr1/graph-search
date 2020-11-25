@@ -79,27 +79,11 @@ export function Home() {
 
           <ClipButton
             clipPath={clipPaths[1]}
-            link={"/linear-search"}
-            label={"Linear Search"}
-            disable={
-              !localStorage.getItem("unlockedPages").includes("linear-search")
-            }
-          />
-
-          <ClipButton
-            clipPath={clipPaths[0]}
-            link={"/binary-search"}
-            label={"binary search"}
-            disable={
-              !localStorage.getItem("unlockedPages").includes("binary-search")
-            }
-          />
-
-          <ClipButton
-            clipPath={clipPaths[2]}
-            link={"/hashing"}
-            label={"Hashing"}
-            disable={!localStorage.getItem("unlockedPages").includes("hashing")}
+            link={"/depth-first-search"}
+            label={"depth first search"}
+            // disable={
+            //   !localStorage.getItem("unlockedPages").includes("linear-search")
+            // }
           />
         </div>
       </>

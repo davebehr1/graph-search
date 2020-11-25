@@ -1,11 +1,10 @@
 import React from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import "./App.css";
-import { BinarySearch } from "./BinarySearch";
-import { Hashing } from "./Hashing";
-import { LinearSearch } from "./LinearSearch";
+import { DepthFirstSearch } from "./DepthFirstSearch";
 import { Home } from "./Home";
 import { NavBar } from "./NavBar";
+import { GraphVis } from "./GraphVis";
 
 export function Routes() {
   let location = useLocation();
@@ -14,9 +13,8 @@ export function Routes() {
       {location.pathname !== "/" && <NavBar />}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/binary-search" component={BinarySearch} />
-        <Route path="/linear-search" component={LinearSearch} />
-        <Route path="/hashing" component={Hashing} />
+        <Route path="/depth-first-search" component={DepthFirstSearch} />
+        <Route path="/circle" component={GraphVis} />
       </Switch>
     </>
   );

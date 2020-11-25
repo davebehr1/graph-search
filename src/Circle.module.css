@@ -1,0 +1,8 @@
+.wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-left: 8%;
+  height: 100%;
+  margin-top: 60px;
+}

@@ -20,18 +20,18 @@ const schema = yup.object().shape({
 });
 
 const answers = {
-  question1: "Sequential search",
-  question2: "Searching for a value and returns it",
-  question3: "Linear search",
-  question4: "False",
+  question1: "Logarithmic search",
+  question2: "True",
+  question3: "True",
+  question4: "O(log n)",
   question5: "True",
-  question6: "O(1)",
-  question7: "Needs the data structure to be sorted ",
-  question8: "Medium and small",
+  question6: "True",
+  question7: "Both",
+  question8: "Binary Search",
   question9: "True",
 };
 
-export function LinearQuiz() {
+export function DepthFirstSearchQuiz() {
   const { unlocked, setUnlocked } = useContext(ProgressContext);
   return (
     <div className={classes.wrapper}>
@@ -58,6 +58,7 @@ export function LinearQuiz() {
                 correct++;
               }
             });
+
             setStatus({
               msg: `${correct} out of ${
                 Object.entries(values).length
@@ -68,12 +69,12 @@ export function LinearQuiz() {
             if (correct >= 6) {
               let vals = [];
               vals = JSON.parse(localStorage.getItem("unlockedPages"));
-              if (vals.includes("binary-search") === false) {
-                vals.push("binary-search");
+              if (vals.includes("hashing") === false) {
+                vals.push("hashing");
               }
               localStorage.setItem("unlockedPages", JSON.stringify(vals));
 
-              setUnlocked([...unlocked, "binary-search"]);
+              setUnlocked([...unlocked, "hashing"]);
             }
           } catch (error) {
             setStatus({
@@ -87,7 +88,7 @@ export function LinearQuiz() {
           <Form className={classes.quiz} onSubmit={handleSubmit}>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Linear search is also known as?
+                Binary search is also known as?
               </label>
               <div
                 role="group"
@@ -121,10 +122,9 @@ export function LinearQuiz() {
               component="div"
               className={classes.fieldError}
             />
-
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Linear search does the following?
+                Binary search requires a data structure to be sorted?
               </label>
               <div
                 role="group"
@@ -132,28 +132,12 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Returns sorted values"
-                  />
-                  Returns sorted values
+                  <Field type="radio" name="question2" value="True" />
+                  True
                 </label>
                 <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Searching for a value and returns it"
-                  />
-                  Searching for a value and returns it
-                </label>
-                <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Searching for values and returns all values"
-                  />
-                  Searching for values and returns all values
+                  <Field type="radio" name="question2" value="False" />
+                  False
                 </label>
               </div>
             </div>
@@ -164,7 +148,7 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Which searching algorithm is the easiest to implement?
+                Binary search is considered an optimal searching algorithm?
               </label>
               <div
                 role="group"
@@ -172,16 +156,12 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question3" value="Linear search" />
-                  Linear search
+                  <Field type="radio" name="question3" value="True" />
+                  True
                 </label>
                 <label>
-                  <Field type="radio" name="question3" value="Binary Search" />
-                  Binary Search
-                </label>
-                <label>
-                  <Field type="radio" name="question3" value="Hashing" />
-                  Hashing
+                  <Field type="radio" name="question3" value="False" />
+                  False
                 </label>
               </div>
             </div>
@@ -192,8 +172,7 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Does linear search require a data structure to be sorted for it
-                to work?
+                What is the average case performance of binary search?
               </label>
               <div
                 role="group"
@@ -201,12 +180,16 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question4" value="True" />
-                  True
+                  <Field type="radio" name="question4" value="O(n)" />
+                  O(n)
                 </label>
                 <label>
-                  <Field type="radio" name="question4" value="False" />
-                  False
+                  <Field type="radio" name="question4" value=" O(n/2)" />
+                  O(n/2)
+                </label>
+                <label>
+                  <Field type="radio" name="question4" value="O(log n)" />
+                  O(log n)
                 </label>
               </div>
             </div>
@@ -217,8 +200,8 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Does Linear search require it to search a whole data structure
-                in the worst case?
+                The worst case performance is the same as the average case
+                performance for binary search
               </label>
               <div
                 role="group"
@@ -242,7 +225,7 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                What is the best case performance for linear search?
+                Binary search is faster than linear search?
               </label>
               <div
                 role="group"
@@ -250,16 +233,12 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question6" value="O(n)" />
-                  O(n)
+                  <Field type="radio" name="question6" value="True" />
+                  True
                 </label>
                 <label>
-                  <Field type="radio" name="question6" value="O(1)" />
-                  O(1)
-                </label>
-                <label>
-                  <Field type="radio" name="question6" value="O(n+6)" />
-                  O(n+6)
+                  <Field type="radio" name="question6" value="False" />
+                  False
                 </label>
               </div>
             </div>
@@ -270,7 +249,8 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                What is untrue about linear search?
+                Which of the following searching algorithm has a best case
+                performance of O(1)?
               </label>
               <div
                 role="group"
@@ -278,32 +258,16 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field
-                    type="radio"
-                    name="question7"
-                    value="Is slow when used on large data structures"
-                  />
-                  Is slow when used on large data structures
+                  <Field type="radio" name="question7" value="Binary Search" />
+                  Binary Search
                 </label>
                 <label>
-                  <Field
-                    type="radio"
-                    name="question7"
-                    value="The worst case performance is O(n)"
-                  />
-                  The worst case performance is O(n)
+                  <Field type="radio" name="question7" value="Linear Search" />
+                  Linear Search
                 </label>
                 <label>
-                  <Field
-                    type="radio"
-                    name="question7"
-                    value="Needs the data structure to be sorted "
-                  />
-                  Needs the data structure to be sorted
-                </label>
-                <label>
-                  <Field type="radio" name="question7" value="All the above" />
-                  All the above
+                  <Field type="radio" name="question7" value="Both" />
+                  Both
                 </label>
               </div>
             </div>
@@ -314,7 +278,9 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                What size of data structures should linear search be used on?
+                Which searching algorithm In terms of iterations and that works
+                only by comparing elements exhibits the best average and
+                worst-case performance of the following searching algorithms?
               </label>
               <div
                 role="group"
@@ -322,24 +288,16 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question8" value="Large" />
-                  Large
+                  <Field type="radio" name="question8" value="Linear search" />
+                  Linear Search
                 </label>
                 <label>
-                  <Field type="radio" name="question8" value="Medium" />
-                  Medium
+                  <Field type="radio" name="question8" value="Binary Search" />
+                  Binary Search
                 </label>
                 <label>
-                  <Field type="radio" name="question8" value="Small" />
-                  Small
-                </label>
-                <label>
-                  <Field
-                    type="radio"
-                    name="question8"
-                    value="Medium and small"
-                  />
-                  Medium and small
+                  <Field type="radio" name="question8" value="Hashing" />
+                  Hashing
                 </label>
               </div>
             </div>
@@ -350,8 +308,8 @@ export function LinearQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Can the average case performance be affected if the search
-                probabilities for each element vary when using linear search?
+                Does binary search compare the target value to the middle
+                element of the array when applied?
               </label>
               <div
                 role="group"
@@ -374,6 +332,7 @@ export function LinearQuiz() {
               className={classes.fieldError}
             />
             {status && <Box className={classes.status}>{status.msg}</Box>}
+
             <div className={classes.buttonWapper}>
               <ClipButton
                 className={classes.button}
