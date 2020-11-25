@@ -80,6 +80,15 @@ export function Blocky() {
           </Block>
         </Category>
 
+        <Category name="logic" colour="160">
+          <Block type="logic_operation" />
+          <Block type="logic_negate" />
+          <Block type="logic_boolean" />
+          <Block type="logic_null" disabled="true" />
+          <Block type="logic_ternary" />
+          <Block type="example_number" />
+        </Category>
+
         {/* <Category name="Math" colour="230" />
         <Category name="Colour" colour="20" />
         <Category name="Variables" colour="330" custom="VARIABLE" />
