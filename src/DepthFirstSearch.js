@@ -65,7 +65,7 @@ export function DepthFirstSearch() {
             <br />
 
             <ReactPlayer
-              url="https://www.youtube.com/watch?v=T2sFYY-fT5o"
+              url="https://youtu.be/Y40bRyPQQr0"
               style={{ margin: "30px" }}
             />
           </div>

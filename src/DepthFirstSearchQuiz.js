@@ -66,14 +66,7 @@ export function DepthFirstSearchQuiz() {
             });
 
             if (correct >= 6) {
-              let vals = [];
-              vals = JSON.parse(localStorage.getItem("unlockedPages"));
-              if (vals.includes("hashing") === false) {
-                vals.push("hashing");
-              }
-              localStorage.setItem("unlockedPages", JSON.stringify(vals));
-
-              setUnlocked([...unlocked, "hashing"]);
+              localStorage.setItem("badges", JSON.stringify({ DFS: true }));
             }
           } catch (error) {
             setStatus({
