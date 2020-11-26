@@ -30,7 +30,14 @@ export function GraphTheory() {
           flavors, such as simple graphs, uniderected graphs and directed
           graphs. Graphs are able to model complex behaviour. They are composed
           of vertices and edges, as seen in the diagram below the blue dots are
-          the vertices and the lines are the edges
+          the vertices and the lines are the edges.
+          <br />
+          <br />
+          There are few characteristics that we use to describe graphs; Graphs
+          are connected when any two vertices are connected by an edge, graphs
+          that have weighted edges are called weighted graphs adnd graphs that
+          have edges that can only be traversed in one direction and called
+          directional graphs
         </Typography>
         <GraphVisTwo />
         <Typography variant="body1" style={{ color: "#10144a" }}>
