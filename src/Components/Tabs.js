@@ -60,36 +60,32 @@ export function SimpleTabs({
           variant="scrollable"
           scrollButtons="auto"
         >
-          <Tab className={classes.tab} label="Background" {...a11yProps(0)} />
           <Tab
             className={classes.tab}
             label="DepthFirstSearch"
-            {...a11yProps(1)}
+            {...a11yProps(0)}
           />
           <Tab
             className={classes.tab}
             label="problem and example"
-            {...a11yProps(2)}
+            {...a11yProps(1)}
           />
 
           <Tab
             className={clsx(classes.tab)}
             label="Quiz"
-            {...a11yProps(3)}
+            {...a11yProps(2)}
             disabled={quizDisabled}
           />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className={classes.panel}>
-        {background}
-      </TabPanel>
-      <TabPanel value={value} index={1} className={classes.panel}>
         {DepthFirstSearch}
       </TabPanel>
 
       <TabPanel
         value={value}
-        index={2}
+        index={1}
         className={classes.examplePanel}
         style={{
           display: "flex",
@@ -100,7 +96,7 @@ export function SimpleTabs({
       >
         {problemAndExample}
       </TabPanel>
-      <TabPanel value={value} index={3} className={classes.panel}>
+      <TabPanel value={value} index={2} className={classes.panel}>
         {quiz}
       </TabPanel>
     </div>

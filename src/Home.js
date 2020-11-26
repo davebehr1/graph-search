@@ -65,6 +65,7 @@ export function Home() {
             link={"/depth-first-search"}
             label={"depth first search"}
           />
+          <ClipButton link={"/graph-theory"} label={"Graph theory"} />
         </div>
       </>
     );

@@ -30,6 +30,7 @@
   flex-direction: column;
   align-items: center;
   background: linear-gradient(120.93deg, #7d7d7d 4.58%, #6f6f6f 91.02%);
+  margin: 50px;
 }
 .fieldError {
   color: #ff0b0b;
