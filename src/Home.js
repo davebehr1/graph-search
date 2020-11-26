@@ -60,12 +60,11 @@ export function Home() {
             />
           </Box>
           <h4 className={classes.subHeading}>Lets Learn ?</h4>
-
+          <ClipButton link={"/graph-theory"} label={"Graph theory"} />
           <ClipButton
             link={"/depth-first-search"}
             label={"depth first search"}
           />
-          <ClipButton link={"/graph-theory"} label={"Graph theory"} />
         </div>
       </>
     );

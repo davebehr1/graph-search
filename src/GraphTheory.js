@@ -19,11 +19,11 @@ export function GraphTheory() {
 
   return (
     <div className={classes.wrapper}>
-      <h1 className={classes.heading}>Depth First Search</h1>
+      <h1 className={classes.heading}>Graph Theory</h1>
 
       <div className={classes.background}>
         <Typography variant="body1" style={{ color: "#10144a" }}>
-          What are Graphs
+          What are Graphs?
         </Typography>
         <Typography variant="body2">
           Graphs are discrete mathemetical models that come in many different
@@ -34,7 +34,7 @@ export function GraphTheory() {
         </Typography>
         <GraphVisTwo />
         <Typography variant="body1" style={{ color: "#10144a" }}>
-          Why is Graph traversal
+          What is Graph traversal?
         </Typography>
         <Typography variant="body2">
           Graph traversal is the process of visiting every vertex in a graph,
@@ -43,7 +43,7 @@ export function GraphTheory() {
           This lesson will focus on Depth First Search
         </Typography>
         <Typography variant="body1" style={{ color: "#10144a" }}>
-          Why are graphs important
+          Why are graphs important?
         </Typography>
         <Typography variant="body2">
           Graphs have many different applications, because they are able to
